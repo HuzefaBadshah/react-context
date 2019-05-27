@@ -1,11 +1,23 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import Postlist from './Postlist';
+import React, {Component} from 'react';
+import UserCreate from './UserCreate';
+import {LanguageStore} from '../contexts/LanguageContext';
+import ColorContext from '../contexts/ColorContext';
+import LanguageSelector from './LanguageSelector';
 
-const App = (props) =>  {
-    return (
-        <div className="ui container"><Postlist /></div>
-    );
+class App extends Component {
+    
+    render() {
+        return (
+            <div className="ui container">
+                <LanguageStore>
+               <LanguageSelector/>
+                <ColorContext.Provider value={'red'}>
+                <UserCreate />
+                </ColorContext.Provider>
+                </LanguageStore>
+            </div>
+        );
+    }
 }
 
-export default connect()(App);
+export default App;
